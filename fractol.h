@@ -6,7 +6,7 @@
 /*   By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 21:11:27 by bmahdi            #+#    #+#             */
-/*   Updated: 2024/02/18 18:27:46 by bmahdi           ###   ########.fr       */
+/*   Updated: 2024/02/20 23:48:01 by bmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,22 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
 # include "minilibx-linux/mlx.h"
 
 #define ERROR_MESSAGE "Usage: ./fractol mandelbrot or ./froctol julia with two values\n"
 /* the width and height*/
 # define W 600
 # define H 600
+
+# define BLACK 0x000000
+# define WHITE 0xFFFFFF
+# define CYAN 0x00FFFF
+# define MAGENTA 0xFF00FF
+# define GRAY 0x808080
+# define DARK_GRAY 0x404040
+# define LIGHT_GRAY 0xC0C0C0
+# define ORANGE 0xFFA500
+# define PURPLE 0x800080
 
 /*
 i_p is an image pointer
@@ -59,7 +67,7 @@ typedef struct	s_complex
 {
 	double	x;
 	double	y;
-}				t_complex
+}				t_complex;
 
 /*libft function*/
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -74,7 +82,12 @@ sum function to grep the sum
 of the z^2 + c
 */
 double  m(double us_m, double m, double x, double o_x);
-t_complex   sum(t_complex z1, t_complex z2);
+t_complex   ft_sum(t_complex z1, t_complex z2);
+t_complex   ft_square(t_complex z);
 
+/*fractol functions*/
+void	f_r(t_f *f);
+void	f_i(t_f *f);
+void	pix_h(int x, int y, t_f *f);
 
 #endif

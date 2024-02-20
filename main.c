@@ -6,7 +6,7 @@
 /*   By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 21:24:43 by bmahdi            #+#    #+#             */
-/*   Updated: 2024/02/18 16:16:57 by bmahdi           ###   ########.fr       */
+/*   Updated: 2024/02/20 17:21:47 by bmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@ void	f_r(t_f *f)
 {
 	int	x;
 	int	y;
+	
 	y = -1;
 	while(++y < H)
 	{
-		y = -1
-		while(x++ < W)
+		y = -1;
+		while(++x < W)
 		{
 			pix_h(x, y, f);
 		}
 	}
+	mlx_put_image_to_window(f->m_c, f->wid, f->g.i_p, 0, 0);
 }
 
 void	f_i(t_f *f)
@@ -60,9 +62,9 @@ int	main(int argc, char **argv)
 	{
 		// fractol initialization
 		f.n = argv[1];
-		f_i(&f); //todo
+		f_i(&f);
 		// fractol render
-		f_r(&f); //to do
+		f_r(&f);
 		// to watch even from the mouse and keys
 		mlx_loop(f.m_c);
 	}

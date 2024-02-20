@@ -51,14 +51,47 @@ void	elucation_error(void)
 	exit(1);
 }
 
+static void	put_pixel(int x, int y, t_img *img, int color)
+{
+	int	offset;
+
+	offset = (y * img->l_e) + (x * (img->bpp / 8));
+	*(unsigned int *)(img->pix_p + offset) = color;
+}
+/*
+
+void	put_pixel(t_img *g, int x, int y, int color)
+{
+	int	dst;
+
+	dst = (y * g->l_e) + (x * (g->bpp / 8));
+	*(unsigned int *)(dst + g->pix_p) = color;
+}
+*/
 void	pix_h(int x, int y, t_f *f)
 {
 	t_complex	z;
 	t_complex	c;
+	int			i;
+	int			color;
 
 	z.x = 0.0;
 	z.y = 0.0;
+	i = 0;
 
 	c.x = m(x, -2, +2, W);
 	c.y = m(y, +2, -2, H);
+	while (i < 100)
+	{
+		z = ft_sum(ft_square(z), c);
+		if ((z.x * z.x) + (z.y * z.y) > 4)
+		{
+			color = m(i, BLACK, WHITE, 100);
+			put_pixel(x, y, &f->g, color);
+			return ;
+		}
+		i++;
+	}
+	put_pixel(x, y, &f->g, PURPLE);
+	
 }
