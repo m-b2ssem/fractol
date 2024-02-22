@@ -12,6 +12,15 @@
 
 #include "fractol.h"
 
+void	events(t_f *f)
+{
+	mlx_hook(f->wid, KeyPress, KeyPressMask, k_h, f);
+	//mlx_hook(f->wid, ButtonPress, ButtonPressMask, m_h, f);
+	//mlx_hook(f->wid, DestroyNotify, StructureNotifyMask,c_h, f);
+	//mlx_hook(f->wid, MotionNotify, PointerMotionMask, j_t, f);
+}
+
+
 void	f_r(t_f *f)
 {
 	int	x;
@@ -20,13 +29,21 @@ void	f_r(t_f *f)
 	y = -1;
 	while(++y < H)
 	{
-		y = -1;
+		x = -1;
 		while(++x < W)
 		{
 			pix_h(x, y, f);
 		}
 	}
 	mlx_put_image_to_window(f->m_c, f->wid, f->g.i_p, 0, 0);
+}
+
+void	data_init(t_f *f)
+{
+	f->sc = 4;
+	f->ither = 42;
+	f->s_x = 0;
+	f->s_y = 0; 
 }
 
 void	f_i(t_f *f)
@@ -50,6 +67,8 @@ void	f_i(t_f *f)
 		elucation_error();
 	}
 	f->g.pix_p = mlx_get_data_addr(f->g.i_p, &f->g.bpp, &f->g.l_e, &f->g.ed);
+	data_init(f);
+	events(f);
 	
 }
 

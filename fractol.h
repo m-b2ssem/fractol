@@ -17,12 +17,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 # include "minilibx-linux/mlx.h"
 
 #define ERROR_MESSAGE "Usage: ./fractol mandelbrot or ./froctol julia with two values\n"
 /* the width and height*/
-# define W 600
-# define H 600
+# define W 800
+# define H 800
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
@@ -60,6 +62,10 @@ typedef struct	s_fractol
 	void	*wid;
 	t_img	g;
 	char	*n;
+	double	sc;
+	int		ither;
+	double	s_x;
+	double	s_y;
 }	t_f;
 
 /*a struct of the complex math*/
@@ -81,7 +87,8 @@ the m function is
 sum function to grep the sum
 of the z^2 + c
 */
-double  m(double us_m, double m, double x, double o_x);
+double m(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
+//double  m(double us_m, double m, double x, double o_x);
 t_complex   ft_sum(t_complex z1, t_complex z2);
 t_complex   ft_square(t_complex z);
 
@@ -89,5 +96,8 @@ t_complex   ft_square(t_complex z);
 void	f_r(t_f *f);
 void	f_i(t_f *f);
 void	pix_h(int x, int y, t_f *f);
+void	events(t_f *f);
+int k_h(int keycode, t_f *f);
+int    c_h(t_f *f);
 
 #endif

@@ -19,10 +19,18 @@ m for new minimum
 x for new maximum
 o_x for old maximum
 */
+
+/*
 double  m(double us_m, double m, double x, double o_x) // understand more
 {
     return ((x - m) * (us_m - 0) / (o_x - 0) + m);
+}*/
+
+double m(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
+{
+    return (new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min;
 }
+
 
 t_complex   ft_sum(t_complex z1, t_complex z2)
 {
