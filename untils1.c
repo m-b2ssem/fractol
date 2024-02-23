@@ -67,22 +67,22 @@ void	pix_h(int x, int y, t_f *f)
 	int			color;
 
 	i = 0;
-	z.x = 0.0;
-	z.y = 0.0;
 
-	c.x = m(x, -2, +2, 0, W) + f->s_x;
-	c.y = m(y, +2, -2, 0, H) + f->s_y;
+	z.x = (m(x, -2, +2, 0, W) * f->zoom) + f->s_x;
+	z.y = (m(y, +2, -2, 0, H) * f->zoom) + f->s_y;
+
+	ft_julia(&z, &c, f);
 	while (i < f->ither)
 	{
 		z = ft_sum(ft_square(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > f->sc)
 		{
-			color = m(i, BLACK, WHITE, 0, f->ither);
+			color = m(i, BLACK, ORANGE, 0, f->ither);
 			put_pixel(x, y, &f->g, color);
 			return ;
 		}
 		i++;
 	}
-	put_pixel(x, y, &f->g, BLACK);
+	put_pixel(x, y, &f->g, WHITE);
 	
 }

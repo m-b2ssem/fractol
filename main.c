@@ -6,7 +6,7 @@
 /*   By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 21:24:43 by bmahdi            #+#    #+#             */
-/*   Updated: 2024/02/20 17:21:47 by bmahdi           ###   ########.fr       */
+/*   Updated: 2024/02/23 16:48:54 by bmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	events(t_f *f)
 {
 	mlx_hook(f->wid, KeyPress, KeyPressMask, k_h, f);
-	//mlx_hook(f->wid, ButtonPress, ButtonPressMask, m_h, f);
-	//mlx_hook(f->wid, DestroyNotify, StructureNotifyMask,c_h, f);
+	mlx_hook(f->wid, ButtonPress, ButtonPressMask, m_h, f);
+	mlx_hook(f->wid, DestroyNotify, StructureNotifyMask,c_h, f);
 	//mlx_hook(f->wid, MotionNotify, PointerMotionMask, j_t, f);
 }
 
@@ -41,9 +41,10 @@ void	f_r(t_f *f)
 void	data_init(t_f *f)
 {
 	f->sc = 4;
-	f->ither = 42;
+	f->ither = 100;
 	f->s_x = 0;
 	f->s_y = 0; 
+	f->zoom = 0.5;
 }
 
 void	f_i(t_f *f)
@@ -79,8 +80,12 @@ int	main(int argc, char **argv)
 	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
-		// fractol initialization
 		f.n = argv[1];
+		if (argc == 4)
+		{
+			f.j_x = atodbl(argv[2]);
+			f.j_y = atodbl(argv[3]);
+		}
 		f_i(&f);
 		// fractol render
 		f_r(&f);

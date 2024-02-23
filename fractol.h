@@ -6,7 +6,7 @@
 /*   By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 21:11:27 by bmahdi            #+#    #+#             */
-/*   Updated: 2024/02/20 23:48:01 by bmahdi           ###   ########.fr       */
+/*   Updated: 2024/02/23 16:58:18 by bmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ typedef struct	s_fractol
 	int		ither;
 	double	s_x;
 	double	s_y;
+	double	j_x;
+	double	j_y;
+	double	zoom;
 }	t_f;
 
 /*a struct of the complex math*/
@@ -91,6 +94,7 @@ double m(double unscaled_num, double new_min, double new_max, double old_min, do
 //double  m(double us_m, double m, double x, double o_x);
 t_complex   ft_sum(t_complex z1, t_complex z2);
 t_complex   ft_square(t_complex z);
+double	atodbl(char *s);
 
 /*fractol functions*/
 void	f_r(t_f *f);
@@ -99,5 +103,7 @@ void	pix_h(int x, int y, t_f *f);
 void	events(t_f *f);
 int k_h(int keycode, t_f *f);
 int    c_h(t_f *f);
+void    ft_julia(t_complex *z, t_complex *c, t_f *f);
+int m_h(int btn , int x, int y, t_f *f);
 
 #endif
