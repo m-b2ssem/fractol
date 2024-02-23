@@ -6,7 +6,7 @@
 /*   By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 21:11:27 by bmahdi            #+#    #+#             */
-/*   Updated: 2024/02/23 16:58:18 by bmahdi           ###   ########.fr       */
+/*   Updated: 2024/02/24 00:02:48 by bmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include <X11/keysym.h>
 # include <X11/X.h>
+# include <X11/keysym.h>
 # include "minilibx-linux/mlx.h"
 
 #define ERROR_MESSAGE "Usage: ./fractol mandelbrot or ./froctol julia with two values\n"
