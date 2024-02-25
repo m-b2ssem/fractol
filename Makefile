@@ -6,23 +6,22 @@
 #    By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 23:15:02 by bmahdi            #+#    #+#              #
-#    Updated: 2024/02/23 23:56:38 by bmahdi           ###   ########.fr        #
+#    Updated: 2024/02/25 20:17:34 by bmahdi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 CC = cc
-MINILIBX_DIR = minilibx-linux
-MINILIBX_LIB = $(MINILIBX_DIR)/libmlx_Linux.a
-CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -L$(MINILIBX_DIR) -lmlx_Linux -lX11 -lXext
-SRC = fractol.c events.c math.c untils1.c untils2.c
+MINILIBX = minilibx-linux/libmlx.a
+CFLAGS = -Wall -Wextra -Werror -Lminilibx-linux -lmlx_Linux -lX11 -lXext
+SRC = /srcs/fractol.c /srcs/events.c /srcs/math.c /srcs/untils1.c \
+		/srcs/untils2.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(OBJ) $(MINILIBX) $(CFLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -34,3 +33,4 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
+

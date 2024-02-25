@@ -25,7 +25,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
-static   size_t	ft_strlen(const char *str)
+static	size_t	ft_strlen(const char *str)
 {
 	const char	*i;
 
@@ -44,7 +44,6 @@ void	ft_putstr_fd(char *s, int fd)
 	write (fd, s, ft_strlen(s));
 }
 
-
 void	elucation_error(void)
 {
 	perror("there is some problem with malloc");
@@ -57,32 +56,4 @@ static void	put_pixel(int x, int y, t_img *img, int color)
 
 	offset = (y * img->l_e) + (x * (img->bpp / 8));
 	*(unsigned int *)(img->pix_p + offset) = color;
-}
-
-void	pix_h(int x, int y, t_f *f)
-{
-	t_complex	z;
-	t_complex	c;
-	int			i;
-	int			color;
-
-	i = 0;
-
-	z.x = (m(x, -2, +2, 0, W) * f->zoom) + f->s_x;
-	z.y = (m(y, +2, -2, 0, H) * f->zoom) + f->s_y;
-
-	ft_julia(&z, &c, f);
-	while (i < f->ither)
-	{
-		z = ft_sum(ft_square(z), c);
-		if ((z.x * z.x) + (z.y * z.y) > f->sc)
-		{
-			color = m(i, BLACK, ORANGE, 0, f->ither);
-			put_pixel(x, y, &f->g, color);
-			return ;
-		}
-		i++;
-	}
-	put_pixel(x, y, &f->g, WHITE);
-	
 }

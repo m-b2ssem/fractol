@@ -6,7 +6,7 @@
 /*   By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 21:11:27 by bmahdi            #+#    #+#             */
-/*   Updated: 2024/02/24 00:02:48 by bmahdi           ###   ########.fr       */
+/*   Updated: 2024/02/25 20:12:29 by bmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <X11/keysym.h>
 # include "minilibx-linux/mlx.h"
 
-#define ERROR_MESSAGE "Usage: ./fractol mandelbrot or ./froctol julia with two values\n"
 /* the width and height*/
 # define W 800
 # define H 800
@@ -40,23 +39,29 @@
 i_p is an image pointer
 pix_p is the pixels pointer
 bpp is for bits pixels pointer
-*/
-
-typedef struct	s_img
-{
-	void	*i_p;
-	char	*pix_p;
-	int	bpp;
-	int	l_e;
-	int	ed;
-}	t_img;
-/*
  m_c mlx connection for mlx_init.
  wid mlx for a new window mlx_new_window()
  g is the image
  n is the name of the program
+a struct of the complex math
+error function
+math functions
+the m function is 
+sum function to grep the sum
+of the z^2 + c
+fractol functions
 */
-typedef struct	s_fractol
+
+typedef struct s_img
+{
+	void	*i_p;
+	char	*pix_p;
+	int		bpp;
+	int		l_e;
+	int		ed;
+}	t_img;
+
+typedef struct s_fractol
 {
 	void	*m_c;
 	void	*wid;
@@ -71,39 +76,26 @@ typedef struct	s_fractol
 	double	zoom;
 }	t_f;
 
-/*a struct of the complex math*/
-typedef struct	s_complex
+typedef struct s_complex
 {
 	double	x;
 	double	y;
-}				t_complex;
+}		t_complex;
 
-/*libft function*/
-int     ft_strncmp(const char *s1, const char *s2, size_t n);
-void	ft_putstr_fd(char *s, int fd);
-
-/*error function*/
-void	elucation_error(void);
-
-/* math functions
-the m function is 
-sum function to grep the sum
-of the z^2 + c
-*/
-double m(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
-//double  m(double us_m, double m, double x, double o_x);
-t_complex   ft_sum(t_complex z1, t_complex z2);
-t_complex   ft_square(t_complex z);
-double	atodbl(char *s);
-
-/*fractol functions*/
-void	f_r(t_f *f);
-void	f_i(t_f *f);
-void	pix_h(int x, int y, t_f *f);
-void	events(t_f *f);
-int k_h(int keycode, t_f *f);
-int    c_h(t_f *f);
-void    ft_julia(t_complex *z, t_complex *c, t_f *f);
-int m_h(int btn , int x, int y, t_f *f);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+void		ft_putstr_fd(char *s, int fd);
+void		elucation_error(void);
+double		m(double us_m, double m, double x, double o_x);
+t_complex	ft_sum(t_complex z1, t_complex z2);
+t_complex	ft_square(t_complex z);
+double		ft_atodbl(char *s);
+void		f_r(t_f *f);
+void		f_i(t_f *f);
+void		pix_h(int x, int y, t_f *f);
+void		events(t_f *f);
+int			k_h(int keycode, t_f *f);
+int			c_h(t_f *f);
+void		ft_julia(t_complex *z, t_complex *c, t_f *f);
+int			m_h(int btn, int x, int y, t_f *f);
 
 #endif
