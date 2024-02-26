@@ -14,8 +14,8 @@ NAME = fractol
 CC = cc
 MINILIBX = minilibx-linux/libmlx.a
 CFLAGS = -Wall -Wextra -Werror -Lminilibx-linux -lmlx_Linux -lX11 -lXext
-SRC = /srcs/fractol.c /srcs/events.c /srcs/math.c /srcs/untils1.c \
-		/srcs/untils2.c
+SRC = fractol.c events.c math.c untils1.c untils2.c
+
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

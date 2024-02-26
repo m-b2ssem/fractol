@@ -43,15 +43,25 @@ t_complex	ft_square(t_complex z)
 	return (result);
 }
 
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
+
 double	ft_atodbl(char *s)
 {
 	long	i;
 	double	d;
 	double	pow;
 	int		sign;
+	int	cur;
 
+	cur = 0;
 	i = 0;
-	fractional_part = 0;
+	d = 0;
 	sign = +1;
 	pow = 1;
 	while ((*s >= 9 && *s <= 13) || 32 == *s)
@@ -59,8 +69,8 @@ double	ft_atodbl(char *s)
 	while ('+' == *s || '-' == *s)
 		if ('-' == *s++)
 			sign = -sign;
-	while (*s != '.' && *s)
-		i = (i * 10) + (*s++ - 48);
+	while (*s != '.' && ft_isdigit(s[cur]))
+		i = (i * 10) + (s[cur++] - 48);
 	if ('.' == *s)
 		++s;
 	while (*s)

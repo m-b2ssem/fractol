@@ -6,7 +6,7 @@
 /*   By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:54:19 by bmahdi            #+#    #+#             */
-/*   Updated: 2024/02/25 19:54:21 by bmahdi           ###   ########.fr       */
+/*   Updated: 2024/02/26 21:44:12 by bmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,6 @@ void	ft_julia(t_complex *z, t_complex *c, t_f *f)
 	}
 }
 
-int	j_t(int x, int y, t_f *f)
-{
-	if (!ft_strncmp(f->n, "julia", 5))
-	{
-		f->j_x = (m(x, +2, -2, W) * f->zoom) + f->s_x;
-		f->j_y = (m(y, -2, +2, W) * f->zoom) + f->s_y;
-		f_r(f);
-	}
-	return (0);
-}
-
 void	pix_h(int x, int y, t_f *f)
 {
 	t_complex	z;
@@ -69,4 +58,12 @@ void	pix_h(int x, int y, t_f *f)
 		i++;
 	}
 	put_pixel(x, y, &f->g, WHITE);
+}
+
+bool	ft_valid_argv(char **argv, t_f *f)
+{
+	f->j_x = ft_atodbl(argv[2]);
+	f->j_y = ft_atodbl(argv[3]);
+	
+	return (f->j_x > -2 && f->j_x < 2 && f->j_y > -2 && f->j_y < 2);	
 }

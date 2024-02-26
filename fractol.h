@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <X11/X.h>
+# include <stdbool.h>
 # include <X11/keysym.h>
 # include "minilibx-linux/mlx.h"
 
@@ -89,6 +90,7 @@ double		m(double us_m, double m, double x, double o_x);
 t_complex	ft_sum(t_complex z1, t_complex z2);
 t_complex	ft_square(t_complex z);
 double		ft_atodbl(char *s);
+int		ft_isdigit(int c);
 void		f_r(t_f *f);
 void		f_i(t_f *f);
 void		pix_h(int x, int y, t_f *f);
@@ -97,5 +99,7 @@ int			k_h(int keycode, t_f *f);
 int			c_h(t_f *f);
 void		ft_julia(t_complex *z, t_complex *c, t_f *f);
 int			m_h(int btn, int x, int y, t_f *f);
+bool	ft_valid_argv(char **argv, t_f *f);
+void	put_pixel(int x, int y, t_img *img, int color);
 
 #endif

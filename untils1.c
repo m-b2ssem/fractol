@@ -50,7 +50,7 @@ void	elucation_error(void)
 	exit(1);
 }
 
-static void	put_pixel(int x, int y, t_img *img, int color)
+void	put_pixel(int x, int y, t_img *img, int color)
 {
 	int	offset;
 
