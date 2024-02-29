@@ -57,9 +57,7 @@ double	ft_atodbl(char *s)
 	double	d;
 	double	pow;
 	int		sign;
-	int	cur;
 
-	cur = 0;
 	i = 0;
 	d = 0;
 	sign = +1;
@@ -69,8 +67,8 @@ double	ft_atodbl(char *s)
 	while ('+' == *s || '-' == *s)
 		if ('-' == *s++)
 			sign = -sign;
-	while (*s != '.' && ft_isdigit(s[cur]))
-		i = (i * 10) + (s[cur++] - 48);
+	while (*s != '.' && *s)
+		i = (i * 10) + (*s++ - 48);
 	if ('.' == *s)
 		++s;
 	while (*s)
