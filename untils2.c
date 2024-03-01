@@ -60,10 +60,25 @@ void	pix_h(int x, int y, t_f *f)
 	put_pixel(x, y, &f->g, WHITE);
 }
 
-bool	ft_valid_argv(char **argv, t_f *f)
+bool ft_valid_argv(char *argv, double *n)
 {
-	f->j_x = ft_atodbl(argv[2]);
-	f->j_y = ft_atodbl(argv[3]);
-	
-	return (f->j_x > -2 && f->j_x < 2 && f->j_y > -2 && f->j_y < 2);	
+    int i = 0;
+    if (argv[i] == '-' || argv[i] == '+')
+        i++;
+    if (!ft_isdigit(argv[i]))
+        return false;
+    while (ft_isdigit(argv[i]) && argv[i] != '\0')
+        i++;
+    if (argv[i] == '.')
+        i++;
+    while (ft_isdigit(argv[i]) && argv[i] != '\0')
+        i++;
+    if (!ft_isdigit(argv[i]) && argv[i] != '\0')
+        return false;
+    if (!ft_isdigit(argv[i - 1]) && argv[i] == '\0')
+	{
+        return false;
+	}
+	*n = ft_atodbl(argv);
+    return true;
 }

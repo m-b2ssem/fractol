@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 	{
 		if (argc == 4)
 		{
-			if (!ft_valid_argv(argv, &f))
+			if (!ft_valid_argv(argv[2], &f.s_x) || !ft_valid_argv(argv[3], &f.s_y))
 			{
 				ft_putstr_fd("invalidpramaters,theranshould be btw -2 and 2", 2);
 				exit(1);
