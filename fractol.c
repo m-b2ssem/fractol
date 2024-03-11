@@ -6,7 +6,7 @@
 /*   By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 21:24:43 by bmahdi            #+#    #+#             */
-/*   Updated: 2024/02/26 21:47:34 by bmahdi           ###   ########.fr       */
+/*   Updated: 2024/03/01 16:11:08 by bmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,18 @@ int	main(int argc, char **argv)
 {
 	t_f	f;
 
-	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
-		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
+	if ((argc == 2 && !ft_strcmp(argv[1], "mandelbrot"))
+		|| (argc == 4 && !ft_strcmp(argv[1], "julia")))
 	{
 		if (argc == 4)
 		{
-			if (!ft_valid_argv(argv[2], &f.s_x) || !ft_valid_argv(argv[3], &f.s_y))
+			if (!ft_valid_argv(argv[2]) || !ft_valid_argv(argv[3]))
 			{
-				ft_putstr_fd("invalidpramaters,theranshould be btw -2 and 2", 2);
+				ft_putstr_fd("please enter valid number", 2);
 				exit(1);
 			}
+			f.j_x = ft_atodbl(argv[2]);
+			f.j_y = ft_atodbl(argv[3]);
 		}
 		f.n = argv[1];
 		f_i(&f);

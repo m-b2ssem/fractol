@@ -6,14 +6,14 @@
 #    By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 23:15:02 by bmahdi            #+#    #+#              #
-#    Updated: 2024/02/25 20:17:34 by bmahdi           ###   ########.fr        #
+#    Updated: 2024/03/01 16:02:34 by bmahdi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 CC = cc
-MINILIBX = minilibx-linux/libmlx.a
-CFLAGS = -Wall -Wextra -Werror -Lminilibx-linux -lmlx_Linux -lX11 -lXext
+MINILIBX = -L minilibx-linux -lmlx -lX11 -lXext
+CFLAGS = -Wall -Wextra -Werror
 SRC = fractol.c events.c math.c untils1.c untils2.c
 
 OBJ = $(SRC:.c=.o)

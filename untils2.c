@@ -6,7 +6,7 @@
 /*   By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:54:19 by bmahdi            #+#    #+#             */
-/*   Updated: 2024/02/26 21:44:12 by bmahdi           ###   ########.fr       */
+/*   Updated: 2024/03/01 16:25:45 by bmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	c_h(t_f *f)
 
 void	ft_julia(t_complex *z, t_complex *c, t_f *f)
 {
-	if (!ft_strncmp(f->n, "julia", 5))
+	if (!ft_strcmp(f->n, "julia"))
 	{
 		c->x = f->j_x;
 		c->y = f->j_y;
@@ -51,7 +51,7 @@ void	pix_h(int x, int y, t_f *f)
 		z = ft_sum(ft_square(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > f->sc)
 		{
-			color = m(i, BLACK, ORANGE, f->ither);
+			color = m(i, WHITE, BLACK, f->ither);
 			put_pixel(x, y, &f->g, color);
 			return ;
 		}
@@ -60,25 +60,26 @@ void	pix_h(int x, int y, t_f *f)
 	put_pixel(x, y, &f->g, WHITE);
 }
 
-bool ft_valid_argv(char *argv, double *n)
+bool	ft_valid_argv(char *argv)
 {
-    int i = 0;
-    if (argv[i] == '-' || argv[i] == '+')
-        i++;
-    if (!ft_isdigit(argv[i]))
-        return false;
-    while (ft_isdigit(argv[i]) && argv[i] != '\0')
-        i++;
-    if (argv[i] == '.')
-        i++;
-    while (ft_isdigit(argv[i]) && argv[i] != '\0')
-        i++;
-    if (!ft_isdigit(argv[i]) && argv[i] != '\0')
-        return false;
-    if (!ft_isdigit(argv[i - 1]) && argv[i] == '\0')
+	int	i;
+
+	i = 0;
+	if (argv[i] == '-' || argv[i] == '+')
+		i++;
+	if (!ft_isdigit(argv[i]))
+		return (false);
+	while (ft_isdigit(argv[i]) && argv[i] != '\0')
+		i++;
+	if (argv[i] == '.')
+		i++;
+	while (ft_isdigit(argv[i]) && argv[i] != '\0')
+		i++;
+	if (!ft_isdigit(argv[i]) && argv[i] != '\0')
+		return (false);
+	if (!ft_isdigit(argv[i - 1]) && argv[i] == '\0')
 	{
-        return false;
+		return (false);
 	}
-	*n = ft_atodbl(argv);
-    return true;
+	return (true);
 }

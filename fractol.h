@@ -6,7 +6,7 @@
 /*   By: bmahdi <bmahdi@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 21:11:27 by bmahdi            #+#    #+#             */
-/*   Updated: 2024/02/25 20:12:29 by bmahdi           ###   ########.fr       */
+/*   Updated: 2024/03/01 16:14:58 by bmahdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <X11/X.h>
 # include <stdbool.h>
 # include <X11/keysym.h>
-# include "minilibx-linux/mlx.h"
+# include <mlx.h>
 
 /* the width and height*/
 # define W 800
@@ -30,11 +30,8 @@
 # define WHITE 0xFFFFFF
 # define CYAN 0x00FFFF
 # define MAGENTA 0xFF00FF
-# define GRAY 0x808080
-# define DARK_GRAY 0x404040
-# define LIGHT_GRAY 0xC0C0C0
+# define YELLOW 0xFFFF00
 # define ORANGE 0xFFA500
-# define PURPLE 0x800080
 
 /*
 i_p is an image pointer
@@ -83,14 +80,14 @@ typedef struct s_complex
 	double	y;
 }		t_complex;
 
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_strcmp(const char *s1, const char *s2);
 void		ft_putstr_fd(char *s, int fd);
 void		elucation_error(void);
 double		m(double us_m, double m, double x, double o_x);
 t_complex	ft_sum(t_complex z1, t_complex z2);
 t_complex	ft_square(t_complex z);
 double		ft_atodbl(char *s);
-int		ft_isdigit(int c);
+int			ft_isdigit(int c);
 void		f_r(t_f *f);
 void		f_i(t_f *f);
 void		pix_h(int x, int y, t_f *f);
@@ -99,7 +96,7 @@ int			k_h(int keycode, t_f *f);
 int			c_h(t_f *f);
 void		ft_julia(t_complex *z, t_complex *c, t_f *f);
 int			m_h(int btn, int x, int y, t_f *f);
-bool	ft_valid_argv(char **argv, t_f *f);
-void	put_pixel(int x, int y, t_img *img, int color);
+bool		ft_valid_argv(char *argv);
+void		put_pixel(int x, int y, t_img *img, int color);
 
 #endif
